@@ -1,0 +1,64 @@
+{
+  "manifest_version": 3,
+  "name": "智能搜索引擎切换器",
+  "version": "1.0.0",
+  "description": "一个功能丰富的搜索引擎切换插件，支持多种搜索引擎、快捷键切换、搜索历史等功能",
+  "permissions": ["storage", "activeTab", "contextMenus", "tabs", "scripting"],
+  "host_permissions": ["*://*/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "搜索引擎切换器",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "options_page": "options.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "commands": {
+    "switch-search-engine": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S"
+      },
+      "description": "切换搜索引擎"
+    },
+    "quick-search": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+F"
+      },
+      "description": "快速搜索选中文本"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "aggregate-search.html",
+        "popup.html",
+        "css/aggregate-search.css",
+        "js/aggregate-search.js",
+        "js/config.js",
+        "js/content-extractor.js",
+        "js/api-config.js",
+        "js/theme-manager.js"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+/* 浮动搜索框样式 */
+.search-engine-float-box {
+  position: fixed;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 12px;
+  z-index: 10000;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  max-width: 300px;
+  animation: fadeInUp 0.2s ease-out;
+}
+
+.float-box-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.float-box-query {
+  font-weight: 500;
+  color: #333;
+  padding: 4px 0;
+  border-bottom: 1px solid #eee;
+  word-break: break-word;
+  max-height: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.float-box-engines {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.float-box-engines button {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #495057;
+  font-weight: 500;
+}
+
+.float-box-engines button:hover {
+  background: #007bff;
+  border-color: #007bff;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.float-box-engines button:active {
+  transform: translateY(0);
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 选中文本高亮效果（可选） */
+.search-engine-highlight {
+  background: rgba(0, 123, 255, 0.1);
+  border-radius: 3px;
+  transition: background-color 0.2s;
+}
+
+/* 响应式设计 */
+@media (max-width: 480px) {
+  .search-engine-float-box {
+    max-width: 90vw;
+    left: 5vw !important;
+  }
+
+  .float-box-engines {
+    justify-content: center;
+  }
+
+  .float-box-engines button {
+    flex: 1;
+    min-width: 60px;
+  }
+}
+
+/* 深色主题支持 */
+@media (prefers-color-scheme: dark) {
+  .search-engine-float-box {
+    background: #2d2d2d;
+    border-color: #444;
+    color: #e0e0e0;
+  }
+
+  .float-box-query {
+    color: #e0e0e0;
+    border-bottom-color: #444;
+  }
+
+  .float-box-engines button {
+    background: #3a3a3a;
+    border-color: #555;
+    color: #e0e0e0;
+  }
+
+  .float-box-engines button:hover {
+    background: #0d7377;
+    border-color: #0d7377;
+  }
+}
+
+/* 防止与网站样式冲突 */
+.search-engine-float-box * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.search-engine-float-box {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif !important;
+  line-height: 1.4 !important;
+  text-align: left !important;
+  direction: ltr !important;
+}

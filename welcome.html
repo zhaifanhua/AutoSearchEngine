@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎使用智能搜索引擎切换器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .welcome-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            width: 90%;
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 48px 32px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 64px;
+            margin-bottom: 16px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-10px);
+            }
+
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 48px 32px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 24px;
+            border-radius: 12px;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            background: #e9ecef;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .feature h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #495057;
+        }
+
+        .feature p {
+            color: #6c757d;
+            line-height: 1.5;
+        }
+
+        .quick-start {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 32px;
+        }
+
+        .quick-start h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #495057;
+            text-align: center;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: #007bff;
+            color: white;
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .step h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #495057;
+        }
+
+        .step p {
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #007bff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0056b3;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-1px);
+        }
+
+        .tips {
+            background: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 32px;
+        }
+
+        .tips h3 {
+            color: #0066cc;
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tips ul {
+            color: #0066cc;
+            padding-left: 20px;
+        }
+
+        .tips li {
+            margin-bottom: 8px;
+        }
+
+        .keyboard-shortcuts {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 16px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .shortcut {
+            text-align: center;
+        }
+
+        .shortcut-key {
+            display: block;
+            font-family: 'Courier New', monospace;
+            background: #495057;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .shortcut-desc {
+            font-size: 12px;
+            color: #0066cc;
+        }
+
+        @media (max-width: 768px) {
+            .welcome-container {
+                margin: 20px;
+                width: calc(100% - 40px);
+            }
+
+            .header {
+                padding: 32px 24px;
+            }
+
+            .content {
+                padding: 32px 24px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="welcome-container">
+        <div class="header">
+            <div class="logo">🔍</div>
+            <h1>欢迎使用智能搜索引擎切换器</h1>
+            <p>让搜索更简单、更高效</p>
+        </div>
+
+        <div class="content">
+            <!-- 主要功能 -->
+            <div class="features">
+                <div class="feature">
+                    <span class="feature-icon">⚡</span>
+                    <h3>快速切换</h3>
+                    <p>一键切换14个主流搜索引擎，包括Google、百度、必应等</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🎯</span>
+                    <h3>智能搜索</h3>
+                    <p>实时搜索建议、搜索历史记录，让搜索更精准</p>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">⚙️</span>
+                    <h3>自定义配置</h3>
+                    <p>添加自定义搜索引擎，完全个性化的搜索体验</p>
+                </div>
+            </div>
+
+            <!-- 快速开始 -->
+            <div class="quick-start">
+                <h2>快速开始</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h4>点击插件图标</h4>
+                        <p>在浏览器工具栏找到搜索引擎图标并点击</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h4>输入搜索内容</h4>
+                        <p>在搜索框中输入您要搜索的关键词</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h4>选择搜索引擎</h4>
+                        <p>点击切换按钮选择您喜欢的搜索引擎</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 操作按钮 -->
+            <div class="actions">
+                <a href="#" class="btn btn-primary" id="openPopup">
+                    <span>🚀</span>
+                    立即体验
+                </a>
+                <a href="#" class="btn btn-secondary" id="openSettings">
+                    <span>⚙️</span>
+                    设置选项
+                </a>
+            </div>
+
+            <!-- 使用技巧 -->
+            <div class="tips">
+                <h3>
+                    <span>💡</span>
+                    使用技巧
+                </h3>
+                <ul>
+                    <li>选中网页文本后右键可快速搜索</li>
+                    <li>支持键盘快捷键操作，更加高效</li>
+                    <li>可以添加任何您喜欢的搜索引擎</li>
+                    <li>所有搜索历史都保存在本地，保护隐私</li>
+                </ul>
+
+                <div class="keyboard-shortcuts">
+                    <div class="shortcut">
+                        <span class="shortcut-key">Ctrl + Shift + S</span>
+                        <span class="shortcut-desc">切换搜索引擎</span>
+                    </div>
+                    <div class="shortcut">
+                        <span class="shortcut-key">Ctrl + Shift + F</span>
+                        <span class="shortcut-desc">搜索选中文本</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('openPopup').addEventListener('click', (e) => {
+            e.preventDefault();
+            // 模拟点击插件图标
+            chrome.action.openPopup();
+        });
+
+        document.getElementById('openSettings').addEventListener('click', (e) => {
+            e.preventDefault();
+            chrome.runtime.openOptionsPage();
+        });
+
+        // 添加欢迎动画效果
+        document.addEventListener('DOMContentLoaded', () => {
+            const features = document.querySelectorAll('.feature');
+            features.forEach((feature, index) => {
+                feature.style.animationDelay = `${index * 0.2}s`;
+                feature.style.animation = 'slideUp 0.6s ease-out forwards';
+                feature.style.opacity = '0';
+            });
+
+            setTimeout(() => {
+                features.forEach(feature => {
+                    feature.style.opacity = '1';
+                });
+            }, 100);
+        });
+    </script>
+</body>
+
+</html>

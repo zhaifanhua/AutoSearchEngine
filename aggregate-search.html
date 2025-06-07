@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聚合搜索结果</title>
+    <link rel="stylesheet" href="css/aggregate-search.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-left">
+                <button id="fullscreenToggle" class="action-btn">
+                    <span>⛶</span>
+                    <span>全屏模式</span>
+                </button>
+            </div>
+
+            <div class="search-info">
+                <h1>🔍 聚合搜索结果</h1>
+                <div class="query-display">
+                    <span>搜索关键词：</span>
+                    <span id="currentQuery" class="query-text"></span>
+                </div>
+            </div>
+
+            <div class="header-actions">
+                <button id="newSearchBtn" class="action-btn">
+                    <span>🔍</span>
+                    <span>新搜索</span>
+                </button>
+                <button id="openAllBtn" class="action-btn primary" style="display: none;">
+                    <span>🚀</span>
+                    <span>打开全部</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- 搜索结果网格 -->
+        <div class="search-results-grid" id="searchResultsGrid">
+            <!-- 动态生成搜索结果卡片 -->
+        </div>
+
+        <!-- 全屏模式退出按钮 -->
+        <div class="fullscreen-exit-hint" id="fullscreenExitHint" style="display: none;">
+            <span>⊡</span>
+            <span>退出全屏</span>
+        </div>
+
+        <!-- 新搜索表单 -->
+        <div class="new-search-modal" id="newSearchModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>开始新搜索</h3>
+                    <button class="close-btn" id="closeModalBtn">×</button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="newQueryInput" class="search-input" placeholder="输入搜索关键词..." autofocus>
+                    <div class="search-actions">
+                        <button id="searchBtn" class="search-btn">搜索</button>
+                        <button id="cancelBtn" class="cancel-btn">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api-config.js"></script>
+    <script src="js/content-extractor.js"></script>
+    <script src="js/theme-manager.js"></script>
+    <script src="js/aggregate-search.js"></script>
+</body>
+
+</html>
