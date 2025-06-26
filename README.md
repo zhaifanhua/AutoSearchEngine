@@ -218,7 +218,7 @@ URL：https://developer.mozilla.org/zh-CN/search?q={query}
 
 ## 📝 版本历史
 
-### v1.0.0 (2024-12-01)
+### v1.0.0 (2025-06-10)
 
 - ✨ 初始版本发布
 - 🚀 聚合搜索功能 - 核心亮点
